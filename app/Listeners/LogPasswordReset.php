@@ -16,7 +16,7 @@ class LogPasswordReset
     public function __construct()
     {
         //
-        session()->flash('success', '恭喜你密码重置成功');
+
     }
 
     /**
@@ -28,5 +28,6 @@ class LogPasswordReset
     public function handle(PasswordReset $event)
     {
         //
+        session()->flash('success', '恭喜你密码重置成功');
     }
 }
