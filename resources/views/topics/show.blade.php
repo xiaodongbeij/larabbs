@@ -6,6 +6,7 @@
 @section('content')
 
     <div class="row">
+
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs author-info">
             <div class="card ">
                 <div class="card-body">
@@ -25,7 +26,7 @@
         </div>
 
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 topic-content">
-            <div class="card ">
+            <div class="card">
                 <div class="card-body">
                     <h1 class="text-center mt-3 mb-3">
                         {{ $topic->title }}
@@ -62,6 +63,15 @@
 
                 </div>
             </div>
+
+            {{-- 用户回复列表 --}}
+            <div class="panel panel-default topic-reply">
+                <div class="panel-body">
+                    @includeWhen(Auth::check(), 'topics._reply_box', ['topic' => $topic])
+                    @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+                </div>
+            </div>
+
         </div>
     </div>
 @stop

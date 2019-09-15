@@ -23,7 +23,7 @@ class TopicsController extends Controller
 		return view('topics.index', compact('topics'));
 	}
 
-    public function show(Topic $topic, User $user, Request $request)
+    public function show(Request $request,Topic $topic,  User $user)
     {
         // URL 矫正
         if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
